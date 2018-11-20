@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
 
 router.get('/test', function(req, res, next){
   var user = new User({
-
   code: "10000",
   data: {
     securityCode: "SH.600369",
@@ -102,7 +101,6 @@ router.get('/test', function(req, res, next){
         res.end('Error');
         return next();
       }
-
       res.json(docs);
     });
   });

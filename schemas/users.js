@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 module.exports = new mongoose.Schema({
-code: Number,
+  code: Number,
   data: {
     securityCode: String,
     name: String,

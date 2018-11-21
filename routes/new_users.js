@@ -32,6 +32,7 @@ router.post('/test', function (req, res, next) {
             return;
         }
     });
+    res.send('save is ok')
     // User.find(function (err, docs) {
     //     if (err) {
     //         res.end('Error');
@@ -43,9 +44,9 @@ router.post('/test', function (req, res, next) {
 
 // 删除
 router.post('/delete', async (req, res, next) => {
-    let securityCode = req.body.securityCode;
-    console.log(securityCode);
-    User.deleteOne({ 'data.securityCode': securityCode }, (err, doc) => {
+    let name = req.body.name;
+    console.log(name);
+    User.deleteOne({ 'data.name': name }, (err, doc) => {
         if (err) {
             console.log(err);
             return;
@@ -56,10 +57,10 @@ router.post('/delete', async (req, res, next) => {
 
 // 更新
 router.post('/update', async (req, res, next) => {
-    let code = req.body.code;
+    let securityCode = req.body.securityCode;
     let updateName = req.body.updateName;
-    console.log(code);
-    User.updateOne({ 'data.securityCode': securityCode }, { $set: { "data.name": updateName } }, (err, doc) => {
+    console.log(updateName);
+    User.updateOne({ 'data.securityCode': securityCode }, { "data.name": updateName }, (err, doc) => {
         console.log(doc);
     })
     res.send('ok')
@@ -68,7 +69,6 @@ router.post('/update', async (req, res, next) => {
 // 查找
 router.post('/find', async (req, res, next) => {
     let new_name = req.body.new_name
-    console.log(new_name);
     User.find({ 'data.name': new_name }, (err, doc) => {
         console.log(doc);
         res.json(doc);
